@@ -13,6 +13,7 @@ namespace CompareSchemas
 
         static void Main(string[] args)
         {
+            // prova modifica ciao
             Configuration = new ConfigurationBuilder()
                 .AddJsonFile("appSettings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
