@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using Microsoft.Extensions.Configuration;
-using MySql.Data;
+﻿using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
+using System;
+using System.Diagnostics;
 
 namespace CompareSchemas
 {
@@ -37,8 +36,8 @@ namespace CompareSchemas
                 var username = Console.ReadLine();
 
                 Console.WriteLine("Input Password...");
-                var password = Console.ReadLine(); 
-                // var password = ReadPassword();
+                // var password = Console.ReadLine(); 
+                var password = ReadPassword();
 
                 CompareSchema(targetHost, username, password);
 
@@ -82,6 +81,7 @@ namespace CompareSchemas
                 {
                     var CurrentSchema = rdr[0].ToString();
 
+                    // Verifico se eseguire la comparazione solamente sugli schema di test
                     if (!bool.Parse(Configuration.GetSection("OnlyTest").Value) || CurrentSchema.EndsWith("test"))
                     {
                         var args = "/schemacompare " +
