@@ -82,6 +82,7 @@ namespace CompareSchemas
                 {
                     var CurrentSchema = rdr[0].ToString();
 
+                    // Verifico se eseguire la comparazione solamente sugli schema di test
                     if (!bool.Parse(Configuration.GetSection("OnlyTest").Value) || CurrentSchema.EndsWith("test"))
                     {
                         var args = "/schemacompare " +
